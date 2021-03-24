@@ -1,11 +1,29 @@
 <script>
+	import Header from "./components/Header.svelte";
+	import Footer from "./components/Footer.svelte";
+	import { Router, Route, Link } from "svelte-routing";
+	import Home from "./pages/Home.svelte";
+	import About from "./pages/About.svelte";
+	import Login from "./pages/Login.svelte";
+	export let url = "";
+
 	export let name;
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<Router url="{url}">
+	<Header/>
+	<nav>
+		<Link to="/">Home</Link>
+		<Link to="about">About</Link>
+		<Link to="login">Sign in</Link>
+	</nav>
+	<div>
+		<Route path="about" component="{About}" />
+		<Route path="/"><Home /></Route>
+		<Route path="login" component="{Login}" />
+	</div>
+	<Footer/>
+</Router>
 
 <style>
 	main {
