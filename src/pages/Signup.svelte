@@ -1,5 +1,5 @@
 <script>
-    import { login } from "../api/auth";
+    import { signup } from "../api/auth";
 
     const handleSubmit = event =>  {
         const request = {
@@ -7,25 +7,22 @@
             password: event.target.password.value
         };
 
-        login(request).then(res => {
-            localStorage.setItem("jwt", res)
-            }
-        );
+        signup(request);
     }
 </script>
 
-<form on:submit|preventDefault="{handleSubmit}" class="login-form">
+<form on:submit|preventDefault="{handleSubmit}" class="signup-form">
     <label for="login">Login</label>
     <input required type="text" id="login" />
 
     <label for="password">Password</label>
     <input required type="password" id="password" />
 
-    <button type="submit">Sign in</button>
+    <button type="submit">Create account</button>
 </form>
 
 <style>
-    .login-form {
+    .signup-form {
         margin: auto;
         width: 30%;
         display: flex;

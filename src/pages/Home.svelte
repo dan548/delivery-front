@@ -1,4 +1,4 @@
 <main>
-    <h1>Hello {name}!</h1>
+    <h1>Hello!</h1>
     <p>Let's login or signup.</p>
 </main>

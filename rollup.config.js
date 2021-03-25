@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import postcss from 'rollup-plugin-postcss';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -61,6 +62,19 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
+		postcss({
+			extensions: ['.scss', '.sass'],
+			extract: false,
+			minimize: true,
+			use: [
+				['sass', {
+					includePaths: [
+						'./src/theme',
+						'./node_modules'
+					]
+				}]
+			]
+		}),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
