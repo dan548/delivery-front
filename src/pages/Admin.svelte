@@ -1,3 +1,22 @@
+<script>
+    import Drawer, {AppContent, Content, Header, Title, Subtitle, Scrim} from '@smui/drawer';
+    import List, {Item, Text, Graphic, Separator, Subheader} from '@smui/list';
+    import { onMount } from "svelte";
+    import ProductList from "../components/ProductList.svelte";
+    import AdminOrderList from "../components/AdminOrderList.svelte";
+    import UserList from "../components/UserList.svelte";
+    import { getWhoAmI } from "../api/whoami";
+
+    let clicked = 'nothing yet';
+
+    onMount(async () => {
+        const me = await getWhoAmI();
+        if (!me.roles.some(role => role.name === "ROLE_ADMIN")) {
+            window.location.replace("http://localhost:5000/")
+        }
+    });
+</script>
+
 <div class="drawer-container">
     <Drawer>
         <Content>
@@ -20,22 +39,13 @@
             {#if clicked === 'Products'}
                 <ProductList/>
             {:else if clicked === 'Users'}
-
+                <UserList/>
             {:else}
-
+                <AdminOrderList/>
             {/if}
         </main>
     </AppContent>
 </div>
-
-<script>
-    import Drawer, {AppContent, Content, Header, Title, Subtitle, Scrim} from '@smui/drawer';
-    import Button, {Label} from '@smui/button';
-    import List, {Item, Text, Graphic, Separator, Subheader} from '@smui/list';
-    import ProductList from "../components/ProductList.svelte";
-
-    let clicked = 'nothing yet';
-</script>
 
 <style>
     .drawer-container {

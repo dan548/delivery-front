@@ -6,7 +6,7 @@ const axiosAPI = axios.create({
 });
 
 // implement a method to execute all the request from here.
-const apiRequest = (method, url, request) => {
+const apiRequest = (method, url, request, params) => {
     const headers = {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
     };
@@ -15,7 +15,8 @@ const apiRequest = (method, url, request) => {
         method,
         url,
         data: request,
-        headers
+        headers,
+        params: params
     }).then(res => {
         return Promise.resolve(res.data);
     })
@@ -25,7 +26,7 @@ const apiRequest = (method, url, request) => {
 };
 
 // function to execute the http get request
-const get = (url, request) => apiRequest("get", url, request);
+const get = (url, params) => apiRequest("get", url, null, params);
 
 // function to execute the http delete request
 const deleteRequest = (url, request) => apiRequest("delete", url, request);

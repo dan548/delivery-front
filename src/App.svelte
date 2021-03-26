@@ -7,12 +7,17 @@
 	import Login from "./pages/Login.svelte";
 	import Signup from "./pages/Signup.svelte";
 	import Admin from "./pages/Admin.svelte";
+	import Courier from "./pages/Courier.svelte";
 
 	export let url = "";
 </script>
 
 <svelte:head>
 	<title>Leantech delivery</title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
 </svelte:head>
 
 <Router url="{url}">
@@ -22,6 +27,8 @@
 		<Link to="about">About</Link>
 		<Link to="login">Sign in</Link>
 		<Link to="signup">Sign up</Link>
+		<Link to="admin">Admin panel</Link>
+		<Link to="courier">Courier</Link>
 	</nav>
 	<div class="page-block">
 		<Route path="about"><About /></Route>
@@ -29,6 +36,7 @@
 		<Route path="login" component="{Login}" />
 		<Route path="signup"><Signup/></Route>
 		<Route path="admin"><Admin/></Route>
+		<Route path="courier"><Courier/></Route>
 	</div>
 	<Footer/>
 </Router>

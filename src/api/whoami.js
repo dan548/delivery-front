@@ -5,6 +5,7 @@ export const getWhoAmI = async () => {
         const response = await Api.get("/whoami");
         return response;
     } catch (error) {
-        console.error(error);
+        console.error(error.response);
+        window.location.href = "http://localhost:5000/login"
     }
 };

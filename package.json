@@ -11,7 +11,10 @@
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@smui/button": "^2.0.0-beta.0",
+    "@smui/card": "^2.0.0-beta.0",
+    "@smui/dialog": "^2.0.0-beta.0",
     "@smui/drawer": "^2.0.0-beta.0",
+    "@smui/fab": "^2.0.0-beta.0",
     "@smui/list": "^2.0.0-beta.0",
     "postcss": "^8.2.8",
     "rollup": "^2.3.4",
@@ -26,6 +29,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "sirv-cli": "^1.0.0",
-    "svelte-routing": "^1.5.0"
+    "svelte-routing": "^1.5.0",
+    "svelte-simple-modal": "^0.9.0"
   }
 }

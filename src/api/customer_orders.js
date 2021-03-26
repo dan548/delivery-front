@@ -1,8 +1,8 @@
 import Api from "../services/api";
 
-export const getOrderList = async () => {
+export const getOrderList = async (requestParams) => {
     try {
-        const response = await Api.get("/api/customer/orders");
+        const response = await Api.get("/api/customer/orders", requestParams);
         return response;
     } catch (error) {
         console.error(error);
