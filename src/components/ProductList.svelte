@@ -2,6 +2,7 @@
     import { getProductList, addNewProduct, deleteProductById } from '../api/products';
     import Fab, { Icon } from '@smui/fab';
     import List, { Item, Text, PrimaryText, SecondaryText } from '@smui/list';
+    import IconButton from '@smui/icon-button';
     import { onMount } from 'svelte';
     import Product from "./Product.svelte";
 
@@ -15,8 +16,16 @@
         prodList = res;
     });
 
-    const doSomething = () => {
+    const openCreateProduct = () => {
         openProductCreation = true;
+    };
+
+    const onClickDelete = async () => {
+        if (selectedProductId !== 0) {
+            await deleteProductById(selectedProductId);
+            const res = await getProductList();
+            prodList = res;
+        }
     };
 </script>
 
@@ -26,12 +35,15 @@
             <Item on:SMUI:action={() => selectedProductId = item.id} selected={selectedProductId === item.id}>
                 <Text>
                     <PrimaryText>{item.name}</PrimaryText>
-                    <SecondaryText>{item.price / 100}</SecondaryText>
+                    <SecondaryText>{item.price / 100}Р</SecondaryText>
                 </Text>
             </Item>
         {/each}
     </List>
-    <Fab class='product-list-fab' on:click={doSomething}><Icon class="material-icons">add</Icon></Fab>
+    <Fab class='product-list-fab' on:click={openCreateProduct}><Icon class="material-icons">add</Icon></Fab>
+    <div style="display: flex; align-items: center;">
+        <IconButton class="material-icons" on:click={onClickDelete}>delete</IconButton>
+    </div>
 </div>
 {#if openProductCreation}
     <Product bind:opened={openProductCreation}/>

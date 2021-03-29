@@ -8,6 +8,7 @@
 	import Signup from "./pages/Signup.svelte";
 	import Admin from "./pages/Admin.svelte";
 	import Courier from "./pages/Courier.svelte";
+	import Customer from "./pages/Customer.svelte";
 
 	export let url = "";
 </script>
@@ -29,6 +30,7 @@
 		<Link to="signup">Sign up</Link>
 		<Link to="admin">Admin panel</Link>
 		<Link to="courier">Courier</Link>
+		<Link to="order">Make order</Link>
 	</nav>
 	<div class="page-block">
 		<Route path="about"><About /></Route>
@@ -37,6 +39,7 @@
 		<Route path="signup"><Signup/></Route>
 		<Route path="admin"><Admin/></Route>
 		<Route path="courier"><Courier/></Route>
+		<Route path="order"><Customer/></Route>
 	</div>
 	<Footer/>
 </Router>
